@@ -9,7 +9,7 @@ function Home() {
       <header className="home-nav">
         <div className="home-nav-left">
           <span className="home-brand-pill">Medi</span>
-          <span className="home-brand-text">Hospital</span>
+          <span className="home-brand-text">Connect</span>
         </div>
 
         <nav className="home-nav-links">
