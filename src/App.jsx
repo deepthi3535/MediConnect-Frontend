@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-
+import Home from "./pages/Home";
 import AdminDashboard from "./pages/AdminDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import NurseDashboard from "./pages/NurseDashboard";
@@ -18,11 +18,11 @@ function RequireAuth({ allowedRoles, children }) {
   const role = localStorage.getItem("role");
 
   if (!token || !role) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   if (allowedRoles && !allowedRoles.includes(role)) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
@@ -32,8 +32,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login */}
-        <Route path="/" element={<Login />} />
+        {/* Public home + login */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Role-based Dashboards */}
         <Route
